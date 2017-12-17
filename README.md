@@ -13,7 +13,7 @@ I want to go through this course and will publish my progress here. Hope this pr
 
 -----
 ## [Assignment 1](http://cs231n.github.io/assignments2017/assignment1/)
-- [X] Q1: k-Nearest Neighbor classifier (20 points)
+- [X] Q1: k-Nearest Neighbor classifier (20 points) [17 Dec 2017](#17122017--set-up--k-nearest-neighbor-classifier)
 - [ ] Q2: Training a Support Vector Machine (25 points)
 - [ ] Q3: Implement a Softmax classifier (20 points)
 - [ ] Q4: Two-Layer Neural Network (25 points)
