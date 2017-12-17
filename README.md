@@ -2,7 +2,14 @@
 
 [Course website](http://cs231n.github.io) – [Site repo](https://github.com/cs231n/cs231n.github.io)
 
-So I want to go through this course and will publish my progress here. Hope this process will help me to build consistency and momentum going through whole course.
+I want to go through this course and will publish my progress here. Hope this process will help me to build consistency and momentum going through whole course.
+
+## Table of Content
+- [Assignment 1](#assignment-1)
+- [Assignment 2](#assignment-2)
+- [Assignment 3](#assignment-3)
+- [Project](#project)
+- [Diary](#diary-section)
 
 -----
 ## [Assignment 1](http://cs231n.github.io/assignments2017/assignment1/)
