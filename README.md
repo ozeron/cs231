@@ -40,7 +40,7 @@ TBA Later
 
 ## Diary Section
 
-### 17.12.2017 Set Up && k-Nearest Neighbor Classifier
+### 17.12.2017 – Set Up && k-Nearest Neighbor Classifier
 So I added this repo and implemented k-Nearest Classifier. During this task I noticed few interesting things.
 1. Half vectorized implementation work worse than 2 lops, probably it's because I do non efficient norm calculation
 2. Vectorizing of L2 normalization do not seemed straightforward at first, but simple rule `(a-b)^2 = a^2 - 2*a*b + b^2` helps a lot. I had really to play to calculate correct square of matrix. But it was fun.
