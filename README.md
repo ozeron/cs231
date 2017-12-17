@@ -13,7 +13,7 @@ I want to go through this course and will publish my progress here. Hope this pr
 
 -----
 ## [Assignment 1](http://cs231n.github.io/assignments2017/assignment1/)
-- [ ] Q1: k-Nearest Neighbor classifier (20 points)
+- [X] Q1: k-Nearest Neighbor classifier (20 points)
 - [ ] Q2: Training a Support Vector Machine (25 points)
 - [ ] Q3: Implement a Softmax classifier (20 points)
 - [ ] Q4: Two-Layer Neural Network (25 points)
@@ -39,3 +39,16 @@ I want to go through this course and will publish my progress here. Hope this pr
 TBA Later
 
 ## Diary Section
+
+- 17.12.2017 Set Up && k-Nearest Neighbor Classifier
+  So I added this repo and implemented k-Nearest Classifier. During this task I noticed few interesting things.
+  1. Half vectorized implementation work worse than 2 lops, probably it's because I do non efficient norm calculation
+  2. Vectorizing of L2 normalization do not seemed straightforward at first, but simple rule `(a-b)^2 = a^2 - 2*a*b + b^2` helps a lot. I had really to play to calculate correct square of matrix. But it was fun.
+  3. I got better at mutation matrixes with `reshape`, `hstack`, `vstack`. All this stuff just looked obvious for me today.
+  **GOOD**:
+  - easier than before to go through task, I'm like nailed it.
+  - I did everything by myself
+  **BAD**:
+  - I had to Google for simple hint about L2 vectorizing. It's quite obvious and I should use basic math rules.
+
+  So tommorow I'm going to close SVM task
