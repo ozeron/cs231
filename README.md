@@ -40,6 +40,15 @@ TBA Later
 
 ## Diary Section
 
+### 19.12.2017 – Implemented SVM naive gradient and Vectorized Loss
+**GOOD**:
+- I succesfully figured out how to correctly calculate svm gradients. [Optimization course page](http://cs231n.github.io/optimization-1/) helped me a lot! I almost figured out it by my self, but missed indicator function they use
+– First time in my life I understood how to write vectorized versions, It's very simple. You just copy-paste naive implementation and vectorize it step-by-step. One cycle per time. Loss vectorizing took only 25 minutes
+
+**BAD**:
+– I haven't out indicator function in gradients
+– I do not had enough time to implement vectorized gradients
+
 ### 17.12.2017 – Set Up && k-Nearest Neighbor Classifier
 So I added this repo and implemented k-Nearest Classifier. During this task I noticed few interesting things.
 1. Half vectorized implementation work worse than 2 lops, probably it's because I do non efficient norm calculation
