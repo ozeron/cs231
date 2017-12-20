@@ -74,12 +74,13 @@ def svm_loss_vectorized(W, X, y, reg):
   # result in loss.                                                           #
   #############################################################################
   num_train = X.shape[0]
+  num_classes = W.shape[1]
   scores = X.dot(W)
   # Advanced indexing to select correct_class_scores
-  correct_class_scores = scores[np.arange(scores.shape[0]), y].reshape((num_train,1))
-  margins = (scores - correct_class_scores) + 1 # note delta = 1
+  correct_class_scores = scores[np.arange(num_train), y].reshape((num_train,1))
+  margins = (scores - correct_class_scores + 1) # note delta = 1
+  margins[np.arange(num_train), y] = 0
   loss = np.sum(margins[margins > 0])
-  loss -= num_train # in each iteration there is one extra +1
   loss /= num_train
   loss += reg * np.sum(W * W)
   #############################################################################
@@ -96,7 +97,23 @@ def svm_loss_vectorized(W, X, y, reg):
   # to reuse some of the intermediate values that you used to compute the     #
   # loss.                                                                     #
   #############################################################################
-  pass
+  
+#   dW[np.arange(num_train), y] -= (np.sum(margins > 0, axis=1).reshape((num_train, 1)) * X)[np.arange(num_train), y]
+    
+#   for i in xrange(num_train):
+#     score = scores[i]
+#     correct_class_score = score[y[i]]
+#     margin = margins[i]
+#     dW[:, y[i]] -= np.sum((margin > 0)) * X[i]
+#     dW[:, margin > 0] += X[i].reshape(X[i].shape[0], 1)
+  binary = np.zeros(margins.shape)
+  binary[margins > 0] = 1
+  row_sum = np.sum(binary, axis=1)
+  binary[np.arange(num_train), y] = -row_sum
+  dW = X.T.dot(binary)
+
+  dW /= num_train
+  dW += 2 *reg * W
   #############################################################################
   #                             END OF YOUR CODE                              #
   #############################################################################
