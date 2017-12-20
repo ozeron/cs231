@@ -14,11 +14,12 @@ I want to go through this course and will publish my progress here. Hope this pr
 -----
 ## [Assignment 1](http://cs231n.github.io/assignments2017/assignment1/)
 - [X] Q1: k-Nearest Neighbor classifier (20 points) [17 Dec 2017](#17122017--set-up--k-nearest-neighbor-classifier)
-- [X] Q2: Training a Support Vector Machine (25 points)
+- [X] Q2: Training a Support Vector Machine (25 points) [19 Dec 2017](#19122017--implemented-svm-naive-gradient-and-vectorized-loss) | [20 Dec 2017](#20122017--implemented-vectorize-svm-and-cross-validation)
 - [ ] Q3: Implement a Softmax classifier (20 points)
 - [ ] Q4: Two-Layer Neural Network (25 points)
 - [ ] Q5: Higher Level Representations: Image Features (10 points)
 - [ ] Q6: Cool Bonus: Do something extra! (+10 points)
+- [ ] Recap: SVM Vectorizing Gradients
 
 ## [Assignment 2](http://cs231n.github.io/assignments2017/assignment2/)
 - [ ] Q1: Fully-connected Neural Network (25 points)
@@ -43,8 +44,9 @@ TBA Later
 ### 20.12.2017 – Implemented vectorize SVM and cross validation
 **GOOD**:
 - implemented cross validation and SGD
+
 **BAD**:
-- spended to much time stuck on vectorizing implementation [This guide helped me alot](https://mlxai.github.io/2017/01/06/vectorized-implementation-of-svm-loss-and-gradient-update.html) 
+- spent to much time on vectorizing Gradients [This guide helped me alot](https://mlxai.github.io/2017/01/06/vectorized-implementation-of-svm-loss-and-gradient-update.html) 
 
 ### 19.12.2017 – Implemented SVM naive gradient and Vectorized Loss
 **GOOD**:
