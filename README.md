@@ -17,7 +17,7 @@ I want to go through this course and will publish my progress here. Hope this pr
 - [X] Q2: Training a Support Vector Machine (25 points) [19 Dec 2017](#19122017--implemented-svm-naive-gradient-and-vectorized-loss) | [20 Dec 2017](#20122017--implemented-vectorize-svm-and-cross-validation)
 - [X] Q3: Implement a Softmax classifier (20 points) [23 Dec 2017]() | [24 Dec 2017]()
 - [X] Q4: Two-Layer Neural Network (25 points) [26 Dec 2017]()
-- [ ] Q5: Higher Level Representations: Image Features (10 points)
+- [X] Q5: Higher Level Representations: Image Features (10 points) [26 Dec 2017]()
 - [ ] Q6: Cool Bonus: Do something extra! (+10 points)
 - [ ] Recap: SVM Vectorizing Gradients
 
@@ -40,6 +40,10 @@ I want to go through this course and will publish my progress here. Hope this pr
 TBA Later
 
 ## Diary Section
+
+### 26.12.2017 – Implemented vectorize SVM and cross validation
+Good that I figured out how to implement neural net, and in general completed first assignment.
+Bad, I worked with low focus in the morning
 
 ### 20.12.2017 – Implemented vectorize SVM and cross validation
 **GOOD**:
