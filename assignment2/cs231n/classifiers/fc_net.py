@@ -202,7 +202,7 @@ class FullyConnectedNet(object):
         # When using dropout we need to pass a dropout_param dictionary to each
         # dropout layer so that the layer knows the dropout probability and the mode
         # (train / test). You can pass the same dropout_param to each dropout layer.
-        self.dropout_param = {}
+        self.dropout_param = { 'mode': 'test', 'p': None }
         if self.use_dropout:
             self.dropout_param = {'mode': 'train', 'p': dropout}
             if seed is not None:
@@ -253,6 +253,7 @@ class FullyConnectedNet(object):
         # layer, etc.                                                              #
         ############################################################################
         cache = []
+        dropout_caches = []
         values = X
         for index in range(self.num_layers - 1):
             layer = index + 1
@@ -261,6 +262,8 @@ class FullyConnectedNet(object):
             w, b = self.params[weight_key], self.params[bias_key]
             values, hidden_cache = affine_relu_forward(values, w, b)
             cache.append(hidden_cache)
+            values, dropout_cache = dropout_forward(values, self.dropout_param)
+            dropout_caches.append(dropout_cache)
         
         weight_key = 'W%d' % self.num_layers
         bias_key = 'b%d' % self.num_layers
@@ -313,6 +316,7 @@ class FullyConnectedNet(object):
             layer = index + 1
             weight_key = 'W%d' % layer
             bias_key = 'b%d' % layer
+            dscores = dropout_backward(dscores, dropout_caches[index])
             dx, dw, db = affine_relu_backward(dscores, cache[index])
             dw += self.reg*self.params[weight_key]
             grads[weight_key] = dw

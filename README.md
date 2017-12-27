@@ -24,7 +24,7 @@ I want to go through this course and will publish my progress here. Hope this pr
 ## [Assignment 2](http://cs231n.github.io/assignments2017/assignment2/)
 - [X] Q1: Fully-connected Neural Network (25 points) [27 Dec 2017](#27122017--implemented-fully-connected-neural-network)
 - [ ] Q2: Batch Normalization (25 points)
-- [ ] Q3: Dropout (10 points)
+- [X] Q3: Dropout (10 points) [27 Dec 2017](#27122017--implemented-fully-connected-neural-network)
 - [ ] Q4: Convolutional Networks (30 points)
 - [ ] Q5: PyTorch / TensorFlow on CIFAR-10 (10 points)
 - [ ] Q6: Do something extra! (up to +10 points)
@@ -42,7 +42,7 @@ TBA Later
 ## Diary Section
 
 ### 27.12.2017 – Implemented Fully-connected Neural Network
-Implemented Fully-connected Neural Network with arbitary architecture. Now things get quite easy, I understand how to go through this course, so I just do assignments. 
+Implemented Fully-connected Neural Network with arbitary architecture. Now things get quite easy, I understand how to go through this course, so I just do assignments. Implemented Dropout.
 The bad: I skipped descriptions of different optimizations techniques.
 
 ### 26.12.2017 – Implemented vectorize SVM and cross validation
@@ -54,7 +54,7 @@ Bad, I worked with low focus in the morning
 - implemented cross validation and SGD
 
 **BAD**:
-- spent to much time on vectorizing Gradients [This guide helped me alot](https://mlxai.github.io/2017/01/06/vectorized-implementation-of-svm-loss-and-gradient-update.html) 
+- spent to much time on vectorizing Gradients [This guide helped me alot](https://mlxai.github.io/2017/01/06/vectorized-implementation-of-svm-loss-and-gradient-update.html)
 
 ### 19.12.2017 – Implemented SVM naive gradient and Vectorized Loss
 **GOOD**:
