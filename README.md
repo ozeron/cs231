@@ -16,13 +16,13 @@ I want to go through this course and will publish my progress here. Hope this pr
 - [X] Q1: k-Nearest Neighbor classifier (20 points) [17 Dec 2017](#17122017--set-up--k-nearest-neighbor-classifier)
 - [X] Q2: Training a Support Vector Machine (25 points) [19 Dec 2017](#19122017--implemented-svm-naive-gradient-and-vectorized-loss) | [20 Dec 2017](#20122017--implemented-vectorize-svm-and-cross-validation)
 - [X] Q3: Implement a Softmax classifier (20 points) [23 Dec 2017]() | [24 Dec 2017]()
-- [X] Q4: Two-Layer Neural Network (25 points) [26 Dec 2017]()
-- [X] Q5: Higher Level Representations: Image Features (10 points) [26 Dec 2017]()
+- [X] Q4: Two-Layer Neural Network (25 points) [26 Dec 2017](#26122017--implemented-vectorize-svm-and-cross-validation)
+- [X] Q5: Higher Level Representations: Image Features (10 points) [26 Dec 2017](#26122017--implemented-vectorize-svm-and-cross-validation)
 - [ ] Q6: Cool Bonus: Do something extra! (+10 points)
 - [ ] Recap: SVM Vectorizing Gradients
 
 ## [Assignment 2](http://cs231n.github.io/assignments2017/assignment2/)
-- [X] Q1: Fully-connected Neural Network (25 points) [27 Dec 2017]()
+- [X] Q1: Fully-connected Neural Network (25 points) [27 Dec 2017](#27122017--implemented-fully-connected-neural-network)
 - [ ] Q2: Batch Normalization (25 points)
 - [ ] Q3: Dropout (10 points)
 - [ ] Q4: Convolutional Networks (30 points)
