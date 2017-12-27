@@ -22,7 +22,7 @@ I want to go through this course and will publish my progress here. Hope this pr
 - [ ] Recap: SVM Vectorizing Gradients
 
 ## [Assignment 2](http://cs231n.github.io/assignments2017/assignment2/)
-- [ ] Q1: Fully-connected Neural Network (25 points)
+- [X] Q1: Fully-connected Neural Network (25 points) [27 Dec 2017]()
 - [ ] Q2: Batch Normalization (25 points)
 - [ ] Q3: Dropout (10 points)
 - [ ] Q4: Convolutional Networks (30 points)
@@ -40,6 +40,10 @@ I want to go through this course and will publish my progress here. Hope this pr
 TBA Later
 
 ## Diary Section
+
+### 27.12.2017 – Implemented Fully-connected Neural Network
+Implemented Fully-connected Neural Network with arbitary architecture. Now things get quite easy, I understand how to go through this course, so I just do assignments. 
+The bad: I skipped descriptions of different optimizations techniques.
 
 ### 26.12.2017 – Implemented vectorize SVM and cross validation
 Good that I figured out how to implement neural net, and in general completed first assignment.
