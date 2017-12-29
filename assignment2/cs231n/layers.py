@@ -180,7 +180,23 @@ def batchnorm_forward(x, gamma, beta, bn_param):
         # variance, storing your result in the running_mean and running_var   #
         # variables.                                                          #
         #######################################################################
-        pass
+        xsum = np.sum(x, axis=0)
+        mean = xsum / N
+        xmu = x - mean
+        xmu_sq = xmu ** 2
+        xmu_sq_sum = np.sum(xmu_sq, axis=0)
+        var = xmu_sq_sum / N
+        var_eps = var + eps
+        sqrt_var_eps = np.sqrt(var_eps)
+        ivar = 1 /sqrt_var_eps
+        yhat = ivar * xmu
+        gamma_yhat = gamma * yhat
+        
+        out = gamma_yhat + beta
+        cache = (x, xsum, mean, xmu, xmu_sq, xmu_sq_sum, var, var_eps, sqrt_var_eps, ivar, yhat, gamma_yhat, gamma, beta)
+        
+        running_mean = momentum * running_mean + (1 - momentum) * mean
+        running_var = momentum * running_var + (1 - momentum) * var
         #######################################################################
         #                           END OF YOUR CODE                          #
         #######################################################################
@@ -191,13 +207,14 @@ def batchnorm_forward(x, gamma, beta, bn_param):
         # then scale and shift the normalized data using gamma and beta.      #
         # Store the result in the out variable.                               #
         #######################################################################
-        pass
+        xscaled = (x - running_mean) / np.sqrt(running_var + eps)
+        out = gamma * xscaled + beta
+        cache = (x, running_mean, running_var, eps, gamma)
         #######################################################################
         #                          END OF YOUR CODE                           #
         #######################################################################
     else:
         raise ValueError('Invalid forward batchnorm mode "%s"' % mode)
-
     # Store the updated running means back into bn_param
     bn_param['running_mean'] = running_mean
     bn_param['running_var'] = running_var
@@ -226,8 +243,59 @@ def batchnorm_backward(dout, cache):
     ###########################################################################
     # TODO: Implement the backward pass for batch normalization. Store the    #
     # results in the dx, dgamma, and dbeta variables.                         #
-    ###########################################################################
-    pass
+    x, xsum, mean, xmu, xmu_sq, xmu_sq_sum, var, var_eps, sqrt_var_eps, ivar, yhat, gamma_yhat, gamma, beta = cache
+    
+    N,D = x.shape
+    
+    dbeta = np.sum(dout, axis=0)
+    assert dbeta.shape == beta.shape
+    dgamma_yhat = dout
+    assert dgamma_yhat.shape == gamma_yhat.shape
+    
+    dgamma = np.sum(dgamma_yhat * yhat, axis=0)
+    assert dgamma.shape == gamma.shape
+    dyhat = dgamma_yhat * gamma
+    assert dyhat.shape == yhat.shape
+    
+    divar = np.sum(dyhat * xmu, axis=0)
+    assert divar.shape == ivar.shape
+    dxmu1 = dyhat * ivar
+    assert dxmu1.shape == xmu.shape
+    
+    dsqrt_var_eps = divar * ( -1. * sqrt_var_eps ** (-2.))
+    assert dsqrt_var_eps.shape == sqrt_var_eps.shape
+    
+    dvar_eps = dsqrt_var_eps * (0.5 * (var_eps ** (-0.5)))
+    assert dvar_eps.shape == var_eps.shape
+    
+    dvar = dvar_eps
+    assert dvar.shape == var.shape
+    
+    dxmu_sq_sum = dvar * 1. / N
+    assert dxmu_sq_sum.shape == xmu_sq_sum.shape
+    
+    dxmu_sq = np.ones((N, D)) * dxmu_sq_sum
+    assert dxmu_sq.shape == xmu_sq.shape
+    
+    dxmu2 = dxmu_sq * 2. * xmu
+    assert dxmu2.shape == xmu.shape
+    
+    dxmu = dxmu1 + dxmu2
+    assert dxmu.shape == xmu.shape
+    dx1 = dxmu
+    assert dx1.shape == x.shape
+    dmean = -1 * np.sum(dxmu, axis=0)
+    assert dmean.shape == mean.shape
+    
+    dxsum = dmean * 1. / N
+    assert dxsum.shape == xsum.shape
+    
+    dx2 = dxsum * np.ones((N, D))
+    assert dx2.shape == x.shape
+    
+    dx = dx1 + dx2
+    assert dx.shape == x.shape
+    
     ###########################################################################
     #                             END OF YOUR CODE                            #
     ###########################################################################

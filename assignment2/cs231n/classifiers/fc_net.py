@@ -5,6 +5,27 @@ import numpy as np
 from cs231n.layers import *
 from cs231n.layer_utils import *
 
+def affine_batchnorm_relu_forward(x, w, b, batchnorm_param):
+    a, fc_cache = affine_forward(x, w, b)
+    
+    N,D = a.shape
+    gamma = np.ones(D)
+    beta = np.zeros(D)
+    
+    b, b_cache = batchnorm_forward(a, gamma, beta, batchnorm_param)
+    out, relu_cache = relu_forward(b)
+    cache = (fc_cache, b_cache, relu_cache)
+    return out, cache
+
+def affine_batchnorm_relu_backward(dout, cache):
+    """
+    Backward pass for the affine-relu convenience layer
+    """
+    fc_cache, b_cache, relu_cache = cache
+    db = relu_backward(dout, relu_cache)
+    da, dgamma, dbeta = batchnorm_backward(db, b_cache)
+    dx, dw, db = affine_backward(da, fc_cache)
+    return dx, dw, db
 
 class TwoLayerNet(object):
     """
@@ -260,7 +281,11 @@ class FullyConnectedNet(object):
             weight_key = 'W%d' % layer
             bias_key = 'b%d' % layer
             w, b = self.params[weight_key], self.params[bias_key]
-            values, hidden_cache = affine_relu_forward(values, w, b)
+            if self.use_batchnorm:
+                param = self.bn_params[index]
+                values, hidden_cache = affine_batchnorm_relu_forward(values, w, b, param)
+            else:
+                values, hidden_cache = affine_relu_forward(values, w, b)
             cache.append(hidden_cache)
             values, dropout_cache = dropout_forward(values, self.dropout_param)
             dropout_caches.append(dropout_cache)
@@ -317,7 +342,10 @@ class FullyConnectedNet(object):
             weight_key = 'W%d' % layer
             bias_key = 'b%d' % layer
             dscores = dropout_backward(dscores, dropout_caches[index])
-            dx, dw, db = affine_relu_backward(dscores, cache[index])
+            if self.use_batchnorm:
+                dx, dw, db = affine_batchnorm_relu_backward(dscores, cache[index])
+            else:
+                dx, dw, db = affine_relu_backward(dscores, cache[index])
             dw += self.reg*self.params[weight_key]
             grads[weight_key] = dw
             grads[bias_key] = db
