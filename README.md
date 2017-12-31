@@ -23,10 +23,10 @@ I want to go through this course and will publish my progress here. Hope this pr
 
 ## [Assignment 2](http://cs231n.github.io/assignments2017/assignment2/)
 - [X] Q1: Fully-connected Neural Network (25 points) [27 Dec 2017](#27122017--implemented-fully-connected-neural-network)
-- [X] Q2: Batch Normalization (25 points)
+- [X] Q2: Batch Normalization (25 points) [29 Dec 2017](#29122017--implemented-batch-normalization-neural-network)
 - [ ] Q2A: Implement Batch Normalization alternative gradient
 - [X] Q3: Dropout (10 points) [27 Dec 2017](#27122017--implemented-fully-connected-neural-network)
-- [ ] Q4: Convolutional Networks (30 points)
+- [X] Q4: Convolutional Networks (30 points)[31 Dec 2017](#31122017--implemented-convolutional-network)
 - [ ] Q5: PyTorch / TensorFlow on CIFAR-10 (10 points)
 - [ ] Q6: Do something extra! (up to +10 points)
 
@@ -41,6 +41,10 @@ I want to go through this course and will publish my progress here. Hope this pr
 TBA Later
 
 ## Diary Section
+### 31.12.2017 – Implemented Convolutional network
+Woof! I did it! I've completed this assignment with convolutional networks it was pretty interesting.
+Working with 3d slices of data and others. What should I do more It's fast implementation of this networks.
+Everything works pretty cool!
 
 ### 29.12.2017 – Implemented Batch normalization Neural Network
 Finally did this task, it was hard, I spent a lot of time. Main reason was lack of focus and attention.
