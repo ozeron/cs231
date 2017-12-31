@@ -437,7 +437,29 @@ def conv_forward_naive(x, w, b, conv_param):
     # TODO: Implement the convolutional forward pass.                         #
     # Hint: you can use the function np.pad for padding.                      #
     ###########################################################################
-    pass
+    N, C, H, W = x.shape
+    F, Cf, HH, WW = w.shape
+    assert C == Cf
+    stride = conv_param.get('stride', 1)
+    pad = conv_param.get('pad', 0)
+    
+    # pad only H and W 
+    xp = np.pad(x, ((0, 0), (0,0), (pad, pad), (pad, pad)), 'constant', constant_values=0)
+    Hout = 1 + (H + 2*pad - HH) / stride
+    Wout = 1 + (W + 2*pad - WW) / stride
+    out = np.zeros((N, F, Hout, Wout))
+    
+    for r in range(N):
+        for i in range(Hout):
+            for j in range(Wout):
+                # top-left
+                tl_y = i*stride
+                tl_x = j*stride
+                x_r = xp[r, :, tl_y:tl_y+HH, tl_x:tl_x+WW]
+                out[r, :, i, j]= np.sum(w * x_r, axis=(1,2,3)) + b
+                assert x_r.shape == w[0].shape
+             
+    
     ###########################################################################
     #                             END OF YOUR CODE                            #
     ###########################################################################
@@ -461,8 +483,45 @@ def conv_backward_naive(dout, cache):
     dx, dw, db = None, None, None
     ###########################################################################
     # TODO: Implement the convolutional backward pass.                        #
-    ###########################################################################
-    pass
+    ###########################################################################   
+    x, w, b, conv_param = cache
+    
+    stride = conv_param.get('stride', 1)
+    pad = conv_param.get('pad', 0)
+    Nx, C, H, W = x.shape
+    Fw, Cf, HH, WW = w.shape
+    N, F, Hout, Wout = dout.shape
+    assert N == Nx
+    assert F == Fw
+    assert Hout == 1 + (H + 2*pad - HH) / stride
+    assert Wout == 1 + (W + 2*pad - WW) / stride
+    # padded 
+    xp = np.pad(x, ((0, 0), (0,0), (pad, pad), (pad, pad)), 'constant', constant_values=0)
+    
+    dx = np.zeros((N, C, H, W))
+    dxp = np.zeros(xp.shape)
+    dw = np.zeros((F, C, HH, WW))
+    
+    for n in range(N):
+        for f in range(F):
+            for i in range(Hout):
+                for j in range(Wout):
+                    value = dout[n, f, i, j]
+                    tl_y = i*stride
+                    tl_x = j*stride
+                    xgrads = w[f] * value
+                    dxp[n, :, tl_y:tl_y+HH, tl_x:tl_x+WW] += xgrads
+                    
+                    x_row = xp[n, :, tl_y:tl_y+HH, tl_x:tl_x+WW]
+                    wgrads = x_row * value
+                    dw[f, :, :, :] += wgrads 
+                    
+                    
+    dx = dxp[:, :, pad:-pad, pad:-pad]
+    # calculate bias gradient
+    db = np.sum(dout, axis=(0, 2, 3))
+    
+    
     ###########################################################################
     #                             END OF YOUR CODE                            #
     ###########################################################################
