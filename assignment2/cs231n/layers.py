@@ -547,11 +547,42 @@ def max_pool_forward_naive(x, pool_param):
     ###########################################################################
     # TODO: Implement the max pooling forward pass                            #
     ###########################################################################
-    pass
+    N, C, H, W = x.shape
+    ph = pool_param.get('pool_height', 1)
+    pw = pool_param.get('pool_width', 1)
+    stride = pool_param.get('stride', 1)
+    
+    Hout = (H - ph) / stride + 1
+    Wout = (H - ph) / stride + 1
+    out = np.zeros((N, C, Hout, Wout))
+    
+    switches = np.zeros(out.shape, dtype=np.int8)
+    #for i in range(Hout):
+    #    for j in range(Wout):
+    #        tl_y = i*stride
+    #        tl_x = j*stride
+    #        xrow = x[:, :, tl_y:tl_y+2, tl_x:tl_x+2]
+    #        maxWal = xrow.max(axis=(2,3)).reshape((N, C))
+    #        out[:, :, i, j]= maxWal
+    for n in range(N):
+        for c in range(C):
+            for i in range(Hout):
+                for j in range(Wout):
+                    tl_y = i*stride
+                    tl_x = j*stride
+                    xrow = x[n, c, tl_y:tl_y+2, tl_x:tl_x+2]
+                    maxarg = xrow.argmax()
+                    x_offset, y_offset = np.unravel_index(maxarg, xrow.shape)
+                    yi = tl_y + y_offset
+                    xi = tl_x + x_offset
+                    
+                    switches[n, c, i, j] = maxarg
+                    out[n, c, i, j]= x[n, c, yi, xi]
+                
     ###########################################################################
     #                             END OF YOUR CODE                            #
     ###########################################################################
-    cache = (x, pool_param)
+    cache = (x, pool_param, switches)
     return out, cache
 
 
@@ -570,7 +601,26 @@ def max_pool_backward_naive(dout, cache):
     ###########################################################################
     # TODO: Implement the max pooling backward pass                           #
     ###########################################################################
-    pass
+    x, pool_param, switches = cache
+    N, C, H, W = x.shape
+    ph = pool_param.get('pool_height', 1)
+    pw = pool_param.get('pool_width', 1)
+    stride = pool_param.get('stride', 1)
+    
+    Hout = (H - ph) / stride + 1
+    Wout = (H - ph) / stride + 1
+    dx = np.zeros(x.shape)
+    for n in range(N):
+        for c in range(C):
+            for i in range(Hout):
+                for j in range(Wout):
+                    tl_y = i*stride
+                    tl_x = j*stride
+
+                    xi, yi = np.unravel_index(switches[n, c, i, j], (ph, pw))
+                    tl_y += yi
+                    tl_x += xi
+                    dx[n, c, tl_y, tl_x] += dout[n, c, i, j]
     ###########################################################################
     #                             END OF YOUR CODE                            #
     ###########################################################################
