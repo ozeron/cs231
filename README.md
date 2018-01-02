@@ -27,7 +27,7 @@ I want to go through this course and will publish my progress here. Hope this pr
 - [ ] Q2A: Implement Batch Normalization alternative gradient
 - [X] Q3: Dropout (10 points) [27 Dec 2017](#27122017--implemented-fully-connected-neural-network)
 - [X] Q4: Convolutional Networks (30 points)[31 Dec 2017](#31122017--implemented-convolutional-network)
-- [ ] Q5: PyTorch / TensorFlow on CIFAR-10 (10 points)
+- [X] Q5: PyTorch / TensorFlow on CIFAR-10 (10 points)[02 Jan 2018](#02012018--pytorch)
 - [ ] Q6: Do something extra! (up to +10 points)
 
 ## [Assignment 3](http://cs231n.github.io/assignments2017/assignment3/)
@@ -41,6 +41,9 @@ I want to go through this course and will publish my progress here. Hope this pr
 TBA Later
 
 ## Diary Section
+### 02.01.2018 – PyTorch
+Ho-ho easily implemented architecture, it nicely overfit, but works well on data. And gets 75% accuracy.
+
 ### 31.12.2017 – Implemented Convolutional network
 Woof! I did it! I've completed this assignment with convolutional networks it was pretty interesting.
 Working with 3d slices of data and others. What should I do more It's fast implementation of this networks.
