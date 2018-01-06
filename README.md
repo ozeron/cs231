@@ -31,8 +31,9 @@ I want to go through this course and will publish my progress here. Hope this pr
 - [ ] Q6: Do something extra! (up to +10 points)
 
 ## [Assignment 3](http://cs231n.github.io/assignments2017/assignment3/)
-- [ ] Q1: Image Captioning with Vanilla RNNs (25 points)
-- [ ] Q2: Image Captioning with LSTMs (30 points)
+- [X] Q1: Image Captioning with Vanilla RNNs (25 points)[06 Jan 2018](#06012018--rnn-and-lstm)
+- [X] Q2: Image Captioning with LSTMs (30 points)[06 Jan 2018](#06012018--rnn-and-lstm)
+- [ ] Q2A: Implement good captioning model
 - [ ] Q3: Network Visualization: Saliency maps, Class Visualization, and Fooling Images (15 points)
 - [ ] Q4: Style Transfer (15 points)
 - [ ] Q5: Generative Adversarial Networks (15 points)
@@ -41,6 +42,13 @@ I want to go through this course and will publish my progress here. Hope this pr
 TBA Later
 
 ## Diary Section
+### 06.01.2018 – RNN and LSTM
+Spend to days watching video lectures on CS231n, finally got to RNNs today and can complete assignments.
+Good that I sit and implement them easily. I feels bad, that I can do assignment so easily, it must be harder,
+thanks for a lot of help functions from creators of course.
+
+Implementing LSTMs was pretty hard, I spent quite a lot of time even have drawn computation graph. Also when I was ready to give up and look for solutions in Internet. I'm like "Ok, one more time and I'm done"! Then "click" and everything works! That's just fucking magic! So I really implemented Everything I need to build LSTMs.
+
 ### 02.01.2018 – PyTorch
 Ho-ho easily implemented architecture, it nicely overfit, but works well on data. And gets 75% accuracy.
 
