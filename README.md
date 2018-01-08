@@ -34,7 +34,7 @@ I want to go through this course and will publish my progress here. Hope this pr
 - [X] Q1: Image Captioning with Vanilla RNNs (25 points)[06 Jan 2018](#06012018--rnn-and-lstm)
 - [X] Q2: Image Captioning with LSTMs (30 points)[06 Jan 2018](#06012018--rnn-and-lstm)
 - [ ] Q2A: Implement good captioning model
-- [ ] Q3: Network Visualization: Saliency maps, Class Visualization, and Fooling Images (15 points)
+- [X] Q3: Network Visualization: Saliency maps, Class Visualization, and Fooling Images (15 points) [08 Jan 2018](#08012018--network-visualization)
 - [ ] Q4: Style Transfer (15 points)
 - [ ] Q5: Generative Adversarial Networks (15 points)
 
@@ -42,6 +42,9 @@ I want to go through this course and will publish my progress here. Hope this pr
 TBA Later
 
 ## Diary Section
+### 08.01.2018 – Network Visualization
+Very hard at first task, I had no idea how to use PyTorch for this task, and it was almost no explicit instructions, so I just struggled a bit. Than I've groked this. Bad that I used other people solution to get idea what to do. (Especially how to pass gradients, and what to do next) 
+
 ### 06.01.2018 – RNN and LSTM
 Spend to days watching video lectures on CS231n, finally got to RNNs today and can complete assignments.
 Good that I sit and implement them easily. I feels bad, that I can do assignment so easily, it must be harder,
