@@ -35,15 +35,18 @@ I want to go through this course and will publish my progress here. Hope this pr
 - [X] Q2: Image Captioning with LSTMs (30 points)[06 Jan 2018](#06012018--rnn-and-lstm)
 - [ ] Q2A: Implement good captioning model
 - [X] Q3: Network Visualization: Saliency maps, Class Visualization, and Fooling Images (15 points) [08 Jan 2018](#08012018--network-visualization)
-- [ ] Q4: Style Transfer (15 points)
+- [X] Q4: Style Transfer (15 points) [13 Jan 2018](#13012018--style-transfer)
 - [ ] Q5: Generative Adversarial Networks (15 points)
 
 ## Project
 TBA Later
 
 ## Diary Section
+### 13.01.2018 – Style Transfer
+Done with style transfer, interesting assignment it was a lot of fun to do this. It was quite complicated, but I manage to do it.
+
 ### 08.01.2018 – Network Visualization
-Very hard at first task, I had no idea how to use PyTorch for this task, and it was almost no explicit instructions, so I just struggled a bit. Than I've groked this. Bad that I used other people solution to get idea what to do. (Especially how to pass gradients, and what to do next) 
+Very hard at first task, I had no idea how to use PyTorch for this task, and it was almost no explicit instructions, so I just struggled a bit. Than I've groked this. Bad that I used other people solution to get idea what to do. (Especially how to pass gradients, and what to do next)
 
 ### 06.01.2018 – RNN and LSTM
 Spend to days watching video lectures on CS231n, finally got to RNNs today and can complete assignments.
